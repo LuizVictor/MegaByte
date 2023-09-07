@@ -3,6 +3,7 @@
 namespace MegaBank\Tests\Unit;
 
 use MegaBank\Domain\Client\Client;
+use MegaBank\Domain\Client\Exceptions\InvalidEmailException;
 use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase
@@ -24,7 +25,7 @@ class ClientTest extends TestCase
 
     public function testMustNotCreateClientWithInvalidEmail()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidEmailException::class);
         $this->expectExceptionMessage("Invalid Email");
         new Client("123.123.123-12", "John Doe", "Invalid");
     }

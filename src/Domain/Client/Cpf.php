@@ -2,6 +2,8 @@
 
 namespace MegaBank\Domain\Client;
 
+use MegaBank\Domain\Client\Exceptions\InvalidCpfException;
+
 class Cpf
 {
     private string $cpf;
@@ -15,7 +17,7 @@ class Cpf
         ];
 
         if (filter_var($cpf, FILTER_VALIDATE_REGEXP, $options) === false) {
-            throw new \InvalidArgumentException("Invalid CPF");
+            throw new InvalidCpfException("Invalid CPF");
         }
 
         $this->cpf = $cpf;
